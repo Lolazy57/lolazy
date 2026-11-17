@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080808"><title>Lolazy — Visual Practice</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+:root{--bg:#080808;--fg:#f2f0eb;--muted:#92908c;--red:#ff3038;--line:#33312f}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:'Noto Sans TC',sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")}
+.topbar{height:72px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font:11px 'DM Mono',monospace;letter-spacing:.13em;position:relative;z-index:30;background:#080808d9;backdrop-filter:blur(12px)}
+.brand{font-weight:500;letter-spacing:.1em}.brand span{color:var(--red)}
+.nav{display:flex;gap:clamp(14px,3vw,34px);color:#b7b4ae}.nav a{transition:color .2s}.nav a:hover,.nav a.active{color:var(--red)}
+.location{color:#777;font:10px 'DM Mono',monospace}
+footer{display:flex;justify-content:space-between;padding:20px 5vw;border-top:1px solid var(--line);font:9px 'DM Mono',monospace;color:#777;letter-spacing:.12em;gap:20px}
+.eyebrow{font:10px 'DM Mono',monospace;color:var(--red);letter-spacing:.2em}
+@media(max-width:650px){.topbar{height:64px;padding:0 5vw}.nav{gap:11px}.nav a{font-size:9px}.location{display:none}footer{padding:18px 5vw;flex-wrap:wrap}}
+
+.home-stage{min-height:calc(100svh - 72px);position:relative;display:grid;place-items:center;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 50% 50%,#241011 0%,#0b0909 38%,#080808 72%)}
+.home-stage:before{content:"";position:absolute;inset:-30%;z-index:-2;background:repeating-conic-gradient(from 0deg at 50% 50%,transparent 0deg 9deg,#ff30380b 9.2deg 9.5deg,transparent 10deg 18deg);animation:rotate 65s linear infinite}
+.home-stage:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,transparent 0 43%,#ff30381a 49%,transparent 51%),radial-gradient(ellipse at center,transparent 20%,#000 82%);animation:breath 5s ease-in-out infinite alternate}
+.logo-wrap{width:min(78vw,1160px);position:relative;display:grid;place-items:center;animation:logoIn 1.3s cubic-bezier(.2,.8,.2,1) both}
+.logo-wrap:before,.logo-wrap:after{content:"";position:absolute;left:-15vw;right:-15vw;height:1px;background:linear-gradient(90deg,transparent,#ff3038,transparent);box-shadow:0 0 10px #ff3038,0 0 30px #ff3038;opacity:.75;transform:rotate(-13deg);animation:laser 4.5s ease-in-out infinite}
+.logo-wrap:after{transform:rotate(17deg);animation-delay:-2.1s;opacity:.45}
+.logo{width:100%;height:auto;display:block;filter:drop-shadow(0 0 18px #ff303855);animation:flicker 8s infinite}
+.corner{position:absolute;font:10px 'DM Mono',monospace;letter-spacing:.2em;color:#777}
+.corner.tl{top:34px;left:5vw}.corner.br{bottom:32px;right:5vw;text-align:right}
+.cross{position:absolute;width:22px;height:22px;opacity:.7}.cross:before,.cross:after{content:"";position:absolute;background:var(--red);box-shadow:0 0 8px var(--red)}.cross:before{width:22px;height:1px;top:10px}.cross:after{height:22px;width:1px;left:10px}
+.c1{top:20%;left:14%}.c2{top:28%;right:16%;transform:scale(.6)}.c3{bottom:18%;left:22%;transform:scale(.8)}
+@keyframes rotate{to{transform:rotate(360deg)}}@keyframes breath{from{opacity:.45}to{opacity:1}}
+@keyframes laser{0%,100%{opacity:.12;transform:translateY(-35px) rotate(-13deg)}50%{opacity:.9;transform:translateY(35px) rotate(-13deg)}}
+@keyframes flicker{0%,18%,20%,22%,60%,62%,100%{opacity:1}19%,21%,61%{opacity:.72}}
+@keyframes logoIn{from{opacity:0;transform:scale(.94);filter:blur(12px)}to{opacity:1;transform:scale(1);filter:blur(0)}}
+@media(max-width:650px){.home-stage{min-height:calc(100svh - 64px)}.logo-wrap{width:88vw}.corner{font-size:8px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+<div class="noise"></div>
+<header class="topbar"><a class="brand" href="index.html">LOLAZY<span>®</span></a><nav class="nav"><a href="work.html#work">WORK</a><a href="work.html#portfolio">PORTFOLIO</a><a href="about.html#about">ABOUT</a><a href="about.html#contact">CONTACT</a></nav><span class="location">TW / 2026</span></header>
+<main class="home-stage">
+<div class="corner tl">INDEPENDENT VISUAL PRACTICE / 001</div>
+<div class="logo-wrap"><img class="logo" src="images/lolazy-logo.png" alt="Lolazy logo"></div>
+<i class="cross c1"></i><i class="cross c2"></i><i class="cross c3"></i>
+<div class="corner br">IMAGE / FORM / ATMOSPHERE<br>SCROLL IS OPTIONAL — EXPLORE</div>
+</main>
+<footer><span>© 2026 LOLAZY — ALL RIGHTS RESERVED</span><span>DESIGNED WITH INTENTION</span></footer>
+</body></html>
