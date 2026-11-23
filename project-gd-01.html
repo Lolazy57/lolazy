@@ -1,1 +1,119 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080808"><title>Project 01 — Lolazy</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap');
+:root{--bg:#080808;--fg:#f2f0eb;--muted:#92908c;--red:#ff3038;--line:#33312f;--font-sans:'Inter','Noto Sans TC',-apple-system,BlinkMacSystemFont,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-sans);font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")}
+.topbar{height:72px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font:400 11px var(--font-sans);letter-spacing:.1em;position:relative;z-index:30;background:#080808d9;backdrop-filter:blur(12px)}
+.brand{font-weight:500;letter-spacing:.08em}.brand span{color:var(--red)}
+.nav{display:flex;gap:clamp(14px,3vw,34px);color:#b7b4ae}.nav a{transition:color .2s}.nav a:hover,.nav a.active{color:var(--red)}
+.location{color:#777;font:400 10px var(--font-sans)}
+footer{display:flex;justify-content:space-between;padding:20px 5vw;border-top:1px solid var(--line);font:400 10px var(--font-sans);color:#777;letter-spacing:.08em;gap:20px}
+@media(max-width:650px){.topbar{height:64px;padding:0 5vw}.nav{gap:11px}.nav a{font-size:10px}.location{display:none}footer{padding:18px 5vw;flex-wrap:wrap}}
 
+.project-main{padding:clamp(42px,6vw,84px) 5vw 110px;max-width:1440px;margin:auto}
+.back-link{display:inline-flex;align-items:center;gap:6px;font:400 11px var(--font-sans);letter-spacing:.08em;color:var(--muted);margin-bottom:28px;transition:color .2s}
+.back-link:hover{color:var(--red)}
+
+.project-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding-bottom:24px;border-bottom:1px solid var(--line);margin-bottom:44px}
+h1{font-size:clamp(1.2rem,2.6vw,2.2rem);font-weight:300;line-height:1.15;letter-spacing:.03em;margin:0}
+h1 span{color:var(--red)}
+.project-info{font:300 12px var(--font-sans);color:var(--muted);letter-spacing:.05em;text-align:right}
+.project-note{max-width:680px;font:300 13px/1.9 var(--font-sans);color:#c7c3bd;margin:0 0 44px}
+
+.vertical-stream{display:flex;flex-direction:column;gap:28px}
+.vertical-stream img{width:100%;height:auto;display:block;border:1px solid #222}
+
+.bottom-nav{margin-top:80px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font:400 11px var(--font-sans);letter-spacing:.08em}
+.bottom-nav a:hover{color:var(--red)}
+
+/* 自訂 Lolazy Logo 游標（僅在支援滑鼠的電腦裝置啟用） */
+.custom-cursor{display:none}
+@media(hover:hover) and (pointer:fine){
+  body,a,img{cursor:none!important}
+  .custom-cursor{
+    display:block;
+    position:fixed;
+    top:0;left:0;
+    width:92px;
+    pointer-events:none;
+    z-index:9999;
+    opacity:0;
+    transform:translate3d(-50%,-50%,0);
+    transition:width .28s cubic-bezier(.2,.8,.2,1),opacity .25s ease;
+  }
+  .custom-cursor.is-visible{opacity:1}
+  .custom-cursor img{
+    width:100%;height:auto;display:block;
+    filter:drop-shadow(0 0 8px rgba(255,48,56,.45));
+    transition:opacity .28s ease,filter .28s ease,transform .28s cubic-bezier(.2,.8,.2,1);
+  }
+  /* 觸碰到設計作品圖片時：放大、內部變透明、保留外框輪廓線 */
+  .custom-cursor.is-outline{width:128px}
+  .custom-cursor.is-outline img{
+    opacity:.32;
+    filter:
+      drop-shadow(1px 0 0 rgba(255,255,255,.95))
+      drop-shadow(-1px 0 0 rgba(255,255,255,.95))
+      drop-shadow(0 1px 0 rgba(255,255,255,.95))
+      drop-shadow(0 -1px 0 rgba(255,255,255,.95))
+      drop-shadow(0 0 10px rgba(255,48,56,.65));
+  }
+}
+
+@media(max-width:650px){.project-head{flex-direction:column;align-items:flex-start;gap:10px}.project-info{text-align:left}.vertical-stream{gap:18px}}
+</style></head><body><div class="noise"></div>
+
+<!-- 自訂 Lolazy Logo 游標元素 -->
+<div class="custom-cursor" id="lolazyCursor"><img src="images/lolazy-logo.png" alt=""></div>
+
+<header class="topbar"><a class="brand" href="index.html">LOLAZY<span>®</span></a><nav class="nav"><a class="active" href="work.html#work">WORK</a><a href="work.html#portfolio">PORTFOLIO</a><a href="about.html#about">ABOUT</a><a href="about.html#contact">CONTACT</a></nav><span class="location">TW / 2026</span></header>
+
+<main class="project-main">
+  <a class="back-link" href="graphic-design.html">← BACK TO GRAPHIC DESIGN</a>
+
+  <div class="project-head">
+    <h1>Project Title 01<span>.</span></h1>
+    <div class="project-info">Visual Identity / Typography — 2026</div>
+  </div>
+
+  <p class="project-note">在這裡寫下這組設計系列的簡短說明或概念（若不需要文字說明，直接把這一行刪除即可）。</p>
+
+  <div class="vertical-stream">
+    <img src="images02/graphic-design/p01/01.webp" alt="Design 01">
+    <img src="images02/graphic-design/p01/02.webp" alt="Design 02">
+    <img src="images02/graphic-design/p01/03.webp" alt="Design 03">
+    <img src="images02/graphic-design/p01/04.webp" alt="Design 04">
+  </div>
+
+  <div class="bottom-nav">
+    <a href="graphic-design.html">ALL GRAPHIC DESIGN</a>
+    <a href="project-gd-02.html">NEXT →</a>
+  </div>
+</main>
+
+<footer><span>© 2026 LOLAZY — ALL RIGHTS RESERVED</span><span>GRAPHIC DESIGN / 01</span></footer>
+
+<script>
+(() => {
+  const cursor = document.getElementById('lolazyCursor');
+  if (!cursor) return;
+
+  window.addEventListener('mousemove', (e) => {
+    cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
+    cursor.classList.add('is-visible');
+  }, { passive: true });
+
+  document.addEventListener('mouseleave', () => {
+    cursor.classList.remove('is-visible');
+  });
+
+  document.querySelectorAll('.vertical-stream img').forEach((art) => {
+    art.addEventListener('mouseenter', () => cursor.classList.add('is-outline'));
+    art.addEventListener('mouseleave', () => cursor.classList.remove('is-outline'));
+  });
+})();
+</script>
+</body></html>
