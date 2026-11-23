@@ -33,8 +33,19 @@ h1 span{color:var(--red)}
 
 .card-caption{padding:15px 0 28px;border-bottom:1px solid var(--line)}.card-caption h2{font:400 13px var(--font-sans);letter-spacing:.05em;margin:0 0 6px}.card-caption p{font:300 12px var(--font-sans);color:var(--muted);margin:0}
 .portfolio-note{margin-top:90px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;color:var(--muted);font:400 10px var(--font-sans);letter-spacing:.08em}
+
+.custom-cursor{display:none}
+@media(hover:hover) and (pointer:fine){
+  body,a,img{cursor:none!important}
+  .custom-cursor{display:block;position:fixed;top:0;left:0;width:92px;pointer-events:none;z-index:9999;opacity:0;transform:translate3d(-50%,-50%,0);transition:opacity .25s ease}
+  .custom-cursor.is-visible{opacity:1}
+  .custom-cursor img{width:100%;height:auto;display:block;filter:drop-shadow(0 0 8px rgba(255,48,56,.45));transition:filter .25s ease,opacity .25s ease}
+  .custom-cursor.is-dark img{filter:brightness(0);opacity:.75}
+}
+
 @media(max-width:600px){.work-main{padding:48px 6vw 80px}.category-grid{grid-template-columns:1fr;gap:18px}h1{margin-bottom:28px}.portfolio-note{flex-direction:column}}
 </style></head><body><div class="noise"></div>
+<div class="custom-cursor" id="lolazyCursor"><img src="images/lolazy-logo.png" alt=""></div>
 <header class="topbar"><a class="brand" href="index.html">LOLAZY<span>®</span></a><nav class="nav"><a class="active" href="work.html#work">WORK</a><a href="#portfolio">PORTFOLIO</a><a href="about.html#about">ABOUT</a><a href="about.html#contact">CONTACT</a></nav><span class="location">TW / 2026</span></header>
 <main class="work-main" id="work">
 <h1>WORK<span>.</span></h1>
@@ -47,23 +58,23 @@ h1 span{color:var(--red)}
     </div>
     <div class="card-caption"><h2>01 graphic design</h2><p>Visual identity / Typography / visual design</p></div>
   </a>
-  <a class="category-card" href="fashion-photography.html" aria-label="fashion-photography">
+  <a class="category-card" href="#" aria-label="fashion photography">
     <div class="card-art">
       <img class="card-bg" src="images/covers/fashion-photography.webp" alt="fashion photography">
       <span class="card-word">fashion photography</span>
       <span class="card-plus">↗</span>
     </div>
-    <div class="card-caption"><h2>02 fashion photography</h2><p> images / Styling / Editorial</p></div>
+    <div class="card-caption"><h2>02 fashion photography</h2><p>Fashion image / Styling / Editorial</p></div>
   </a>
-  <a class="category-card" href="zine.html" aria-label="zine">
+  <a class="category-card" href="#" aria-label="zine">
     <div class="card-art">
       <img class="card-bg" src="images/covers/zine.webp" alt="zine">
       <span class="card-word">zine</span>
       <span class="card-plus">↗</span>
     </div>
-    <div class="card-caption"><h2>03 zine</h2><p>independent publication / Art book</p></div>
+    <div class="card-caption"><h2>03 zine</h2><p>Independent publication / Art book</p></div>
   </a>
-  <a class="category-card" href="film.html" aria-label="film">
+  <a class="category-card" href="#" aria-label="film">
     <div class="card-art">
       <img class="card-bg" src="images/covers/film.webp" alt="film">
       <span class="card-word">film</span>
@@ -71,15 +82,15 @@ h1 span{color:var(--red)}
     </div>
     <div class="card-caption"><h2>04 film</h2><p>school production / movie</p></div>
   </a>
-  <a class="category-card" href="art-photography.html" aria-label="art-photography">
+  <a class="category-card" href="#" aria-label="art photography">
     <div class="card-art">
       <img class="card-bg" src="images/covers/art-photography.webp" alt="art photography">
-      <span class="card-word">art photography</span>
+      <span class="card-word">ART PHOTOGRAPHY</span>
       <span class="card-plus">↗</span>
     </div>
     <div class="card-caption"><h2>05 art photography</h2><p>fine arts / art crafts</p></div>
   </a>
-  <a class="category-card" href="studio.html" aria-label="studio">
+  <a class="category-card" href="#" aria-label="studio">
     <div class="card-art">
       <img class="card-bg" src="images/covers/studio.webp" alt="studio">
       <span class="card-word">studio</span>
@@ -87,7 +98,7 @@ h1 span{color:var(--red)}
     </div>
     <div class="card-caption"><h2>06 studio</h2><p>Experimental / prints</p></div>
   </a>
-  <a class="category-card" href="exhibition.html" aria-label="exhibition">
+  <a class="category-card" href="#" aria-label="exhibition">
     <div class="card-art">
       <img class="card-bg" src="images/covers/exhibition.webp" alt="exhibition">
       <span class="card-word">exhibition</span>
@@ -98,4 +109,7 @@ h1 span{color:var(--red)}
 </div>
 <div class="portfolio-note"><span>PORTFOLIO / SEVEN FIELDS OF PRACTICE</span><span>CLICK-THROUGH PROJECT PAGES CAN BE ADDED LATER ↗</span></div>
 </main>
-<footer><span>© 2026 LOLAZY — ALL RIGHTS RESERVED</span><span>WORK / PORTFOLIO</span></footer></body></html>
+<footer><span>© 2026 LOLAZY — ALL RIGHTS RESERVED</span><span>WORK / PORTFOLIO</span></footer>
+<script>
+(()=>{const c=document.getElementById('lolazyCursor');if(!c)return;window.addEventListener('mousemove',e=>{c.style.transform=`translate3d(${e.clientX}px,${e.clientY}px,0) translate(-50%,-50%)`;c.classList.add('is-visible')},{passive:true});document.addEventListener('mouseleave',()=>c.classList.remove('is-visible'));document.querySelectorAll('.card-art').forEach(el=>{el.addEventListener('mouseenter',()=>c.classList.add('is-dark'));el.addEventListener('mouseleave',()=>c.classList.remove('is-dark'))})})();
+</script></body></html>
